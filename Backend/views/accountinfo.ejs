@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Login</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <script>
+    
+    function checkpassword(event){
+
+    
+    const new_password = document.getElementById("new_password").value;
+    let passwordValid = false;
+    let message = "";
+     // Check if current password is entered
+     if(new_password===""){
+        message = "You did not enter a new password";
+        passwordValid = false;
+    }
+    
+     else if(new_password) {
+        // If current password is provided, hash it with the salt
+        passwordValid = true;
+        let salt = document.getElementById("salt").value;
+        let hashed = CryptoJS.SHA256(new_password + ":" + salt).toString(CryptoJS.enc.Hex);
+        document.getElementById("hashedPassword").value = hashedNew;
+    }
+    
+    // If there's a validation issue, show the message and prevent form submission
+    if (!passwordValid) {
+        document.getElementById("message").innerHTML = message;
+        document.getElementById("message").style.display = "block";  // Ensure message is visible
+        event.preventDefault();  // Stop form submission
+    }
+        
+            
+
+        }
+
+    </script>
+</head>
+<body>
+    <div class="container-fluid vh-100" style="margin-top: 10px;">
+    <div class="" style="margin-top: 100px;">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-7 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">
+                        Account Info
+                    </h3>
+                    <form  method="post" onsubmit="return checkpassword(event);">
+                        <div class="p-4">
+                            <div class="input-group mb-3">     
+                                <span class="input-group-text bg-primary d-flex align-items-center">
+                                    <p class="text-white mb-0">First Name:</p>  
+                                </span>
+                                <input id="firstname" name="firstname" type="text" class="form-control" value="<%= users.firstname %>">
+                            </div>
+                            
+
+                            <div class="input-group mb-3">     
+                                <span class="input-group-text bg-primary d-flex align-items-center">
+                                    <p class="text-white mb-0">First Name:</p>  
+                                </span>
+                                <input id="lastname" name="lastname" type="text" class="form-control" value="<%= users.lastname %>">
+                            </div>
+
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary d-flex align-items-center">
+                                    
+                                    <p class="text-white">UserName:</p>
+                                
+                                </span>
+                                <input readonly id="currentusername" name="currentusername" type="text" class="form-control" value="<%= username %>">
+                                
+                                
+                            </div>
+                            <div>
+                                <p id="message" class="text-danger" >
+                                    <%- locals.message %>
+                                </p>
+                            </div>
+                            
+                                <div class="input-group mt-4">
+                                    <span class="input-group-text bg-primary d-flex align-items-center"><p class="text-white">Change Password:</p>
+                                    </span>
+                                    <input id="new_password"  type="password" class="form-control" autofocus="autofocus"  value="">
+    
+                                </div>
+                                <div>
+                                    <p id="message" class="text-danger" hidden>
+                                        Problem Message Here
+                                    </p>
+                                </div>
+                                <input type="hidden" id="username" name="username" value="<%= users.username %>">
+                                <input type="hidden" id="salt" name="salt" value="<%= users.salt %>">
+                                <input type="hidden" id="hashedPassword" name="hashedPassword" value="">
+                            
+                                <div class="mt-4">
+                                    <span class="input-group-text bg-primary d-flex justify-content-center align-items-center">
+                                        <p class="text-white mb-0">Promote User?</p>
+                                    </span>
+                                    <select id="promote" name="promote" class="form-select w-100 text-center">
+                                        <option value="customer" disabled selected>Customer</option>
+                                        <option value="employee">Employee</option>
+                                        <option value="admin">Admin</option>
+                                    </select> 
+                                </div>
+                                   
+                                    
+                                    <div class="p-4">
+                                        
+                                        <button type="submit" class="btn btn-primary">Save changes</button>
+                                        
+                                </div>
+                        
+                               
+                            
+                            
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

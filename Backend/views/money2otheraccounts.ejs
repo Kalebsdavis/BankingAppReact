@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Login</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+   <script>
+    
+    
+    function verifyTransaction(event){
+        const recipient = document.getElementById('recipient').value;
+        const from_account = document.getElementById('from_account').value;
+        const amount = document.getElementById('amount').value;
+        const memo = document.getElementById('memo').value;
+        const checking = document.getElementById('checkingBalance').value;
+        const savings = document.getElementById('savingsBalance').value;
+        let isValid = false;
+
+        let message = ""
+        
+        
+        
+        if((from_account=='checking' && amount > checking)|| from_account == 'savings' && amount > savings){
+            message = "you do not have enough funds to send that amount.";
+        }else{
+            isValid = true;
+        }
+
+        if(!isValid){
+            document.getElementById("message").innerHTML = message;
+            document.getElementById("message").style.display = "block";  // Ensure message is visible
+            event.preventDefault();  // Stop form submission
+        }
+    }
+   </script>
+</head>
+<body>
+    <div class="container-fluid vh-100" style="margin-top: 10px;">
+    <div class="" style="margin-top: 100px;">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">
+                        Send Money
+                    </h3>
+                    <form  method="post" onsubmit="verifyTransaction(event);">
+                        <div class="p-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="bi bi-person-plus-fill text-white"></i>
+                                </span>
+                                <input id="recipient" name="recipient" type="text" class="form-control" value="" autofocus ="autofocus" placeholder = "please enter their username">
+
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                   <label for="from_account" style="color: white;" >from account:</label>
+                                </span>
+                                
+                                <select id="from_account" name="from_account" class="form-control>">
+                                    <option value="savings">savings</option>
+                                    <option value="checkings">checkings</option>
+                                    
+                                </select>
+
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="bi bi-person-plus-fill text-white"></i>
+                                </span>
+                                <input id="amount" name="amount" type="text" class="form-control" value="" autofocus ="autofocus" placeholder = "$">
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="bi bi-person-plus-fill text-white"></i>
+                                </span>
+                                <input id="memo" name="memo" type="text" class="form-control" value="" autofocus ="autofocus" placeholder = "send memo">
+                                <p id="message" class="text-danger rounded d-flex justify-content-center">
+                                    <%- locals.message %>
+                                </p>
+                            </div>
+                            <input type="text" id="checkingBalance" value="<%= checkBalance %>" hidden>
+                            <input type="text" id="savingsBalance" value="<%= saveBalance %>" hidden>
+                                    <div class="p-4">
+                                        
+                                        <div class="rounded d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary">Send</button>
+                                           
+                                          </div>
+ 
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

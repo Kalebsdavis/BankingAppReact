@@ -1,0 +1,55 @@
+.login-container{
+    width: 30%;
+    margin-top: 10%;
+    padding: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 15px rgb(109, 109, 109);
+    border-radius: 5px;
+
+}
+.main-content{
+    justify-content: center;
+    align-items: center;
+}
+.LoginForm{
+    min-width: auto;
+    text-align: center;
+}
+.header{
+    color: rgb(71, 145, 108);
+}
+
+.btn{
+    background-color: rgb(71, 145, 108);
+    color: rgb(255, 255, 255);
+    border-radius: 5px;
+    border: none;
+}
+
+.btn:hover{
+    background-color: rgb(62, 126, 94);
+}
+.no-account{
+    text-decoration: none;
+    color: rgb(71, 145, 108);
+}
+.no-account:hover{
+    color: rgb(62, 126, 94);
+}
+.email{
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: row;
+}
+.password{
+    margin-bottom:1rem;
+    display: flex;
+    flex-direction: row;
+}
+.icon{
+    margin-right: 10px;
+    margin-top: 0.5rem;
+}

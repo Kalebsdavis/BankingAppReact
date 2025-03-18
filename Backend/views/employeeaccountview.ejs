@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Customer View</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+ 
+ 
+</head>
+
+<body>
+  <div class="position-relative p-4" style="background-color: #338dff;" >
+    <h2 class="text-center text-white">USERNAMES Account</h2>
+    <div class="position-absolute top-0 start-0 p-3">
+      <a class="text-white" style="text-decoration: none;" href="/employee" >Go Back</a>
+  </div>
+  </div>
+    <a href="/checkingtransaction" style="text-decoration: none;"><div class="" style="margin-top:100px">               <!-- space padding on top -->
+    <div class="d-flex justify-content-center">         <!-- center -->
+      <div class="col-md-8 shadow-lg p-5 ">             <!-- divs drop down with lines, shadow around box, padding in box-->
+        <div class="text-center">                       <!-- center text -->
+          <h2 class="text-primary">Checkings Account</h2>
+        </div>
+        <!-- We'll do an overlay, so prepare with position:relative-->
+        <div class="my-5 text-center" style="position:relative">
+          <div id="startButton" style="visibility:visible" >
+            <div class="text-center mt-2"><h3>$<%= accountbalance.checking %></h3></div>
+          </div>
+          <!-- Position this one so it's in the middle and overlays the button-->
+          <!-- See https://getbootstrap.com/docs/5.0/utilities/position/ -->
+         
+        </div>
+      </div>
+    </div>
+  </div></a>
+
+  <a href="/savingstransaction" style="text-decoration: none;">
+  <div class="" style="margin-top:100px">               <!-- space padding on top -->
+    <div class="d-flex justify-content-center">         <!-- center -->
+      <div class="col-md-8 shadow-lg p-5 ">             <!-- divs drop down with lines, shadow around box, padding in box-->
+        <div class="text-center">                       <!-- center text -->
+          <h2 class="text-primary"> Savings Account</h2>
+        </div>
+        <!-- We'll do an overlay, so prepare with position:relative-->
+        <div class="my-5 text-center" style="position:relative">
+          <div id="startButton" style="visibility:visible" >
+            <div class="text-center mt-2"><h3>$<%= accountbalance.savings %></h3></div>
+          </div>
+          <!-- Position this one so it's in the middle and overlays the button-->
+          <!-- See https://getbootstrap.com/docs/5.0/utilities/position/ -->
+          
+        </div>
+      </div>
+    </div>
+  </div>
+  </a>
+
+  <!-- </div> -->
+</body>
+
+</html>

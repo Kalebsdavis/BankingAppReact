@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Timings</title>
+  <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+  <style>
+   
+</style>
+<script>
+
+  function checkTransactionRequest(event){
+      const ammount = parseFloat(document.getElementById("deposit").value);
+      let message = "";
+      let depositValid = false; 
+      const transaction_type = document.getElementById("transaction_type").value;
+      const balance = document.getElementById("balance").value
+      
+      if(ammount<0){
+        message = "The amound entered is less than 0.";
+      }
+      else if(ammount == 0){
+        message = "You did not enter an amount";
+      }
+      
+      if(transaction_type == 'withdraw'){
+        if(balance < amount){
+            message = "you do not have enough in this account to withdraw that amount."
+        }
+        else{
+            depositValid = true;
+        }
+      }
+      else{
+        depositValid = true;
+      }
+
+      if(!depositValid){ 
+        document.getElementById("message").innerHTML = message;
+        document.getElementById("message").style.display = "block";  // Ensure message is visible
+        event.preventDefault();  // Stop form submission
+      }
+  }
+
+</script>
+</head>
+
+<body>
+    <div class="position-relative p-4" style="background-color: #338dff;" >
+        <h2 class="text-center text-white">____ Bank</h2>
+        <div class="position-absolute top-0 end-0 p-3">
+               
+            </div>
+      </div>
+   <form method="post"  onsubmit="checkTransactionRequest(event);">
+      <div class="rounded d-flex justify-content-center p-2">
+    <h2> Deposit/Withdrawels</h2>
+  </div>
+  <div class="rounded d-flex justify-content-center p-2">
+    <div class="m-2" style="width: 400px">
+      <h5 class="text-center ">User Names transactions</h1>
+    </div>
+    
+  </div>
+  
+  <div class="rounded d-flex justify-content-center">
+    <div class="m-2" style="width: 800px">
+            <label for="transaction_type">Choose Transaction Type:</label>
+            <select id="transaction_type" name="transaction_type" class="form-control">
+                <option value="deposit">Deposit</option>
+                <option value="withdraw">Withdraw</option>
+            </select>
+            <input  type="text" id="deposit" name="deposit" value="0.00" class="form-control rounded">
+            <input type="text" style=" height: 10rem;" id="memo" name="memo" value="" class="form-control rounded" placeholder="memo">
+            <input type="text" id="balance" value="<%= balance %>" hidden>
+            
+            <p id="message" class="text-danger rounded d-flex justify-content-center">
+                <%- locals.message %>
+            </p>
+
+        
+        
+    </div>
+   
+  </div>
+
+  <div class="rounded d-flex justify-content-center">
+    <% if (users.user_type_id == 1){ %>
+      <a href="/customer"><button type="button" style="margin-right: 1rem;" class="btn btn-primary" >Return to Account</button></a>
+     <% }else{ %>
+      <a href="/employeeaccountview"><button type="button" style="margin-right: 1rem;" class="btn btn-primary" >Return to Account</button></a>
+      <% } %>
+    <button type="submit" class="btn btn-primary" onclick="checkDeposit">Deposit/Withdraw Amount</button>
+    
+  </div>
+</form>
+</body>
+
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Login</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+   <script>
+    function checkTransferLogic(event){
+        const fromacc = document.getElementById("from_account").value;
+        const toacc = document.getElementById("to_account").value;
+        const checking = document.getElementById("checkingBalance").value;
+        const savings = document.getElementById("savingsBalance").value;
+        const amount = document.getElementById('deposit').value;
+        let message = "";
+        let isValid = false;
+        if((fromacc == 'checking' && toacc == 'checking')||(fromacc == "savings" && toacc == "savings")){
+            message = "cannot transfer to the same account"
+        }
+        else if((fromacc == 'checking' && toacc == 'saving')){
+            if(checking<amount){
+                message ="error you are trying to transfer more than what you have in your account"
+            }
+        }
+        else if((fromacc == 'savings' && toacc == 'checkings')){
+            if(savings<amount){
+                message ="error you are trying to transfer more than what you have in your account"
+            }
+        }
+        else{
+            isValid =True;
+        }
+        if(!isValid){
+            document.getElementById("message").innerHTML = message;
+            document.getElementById("message").style.display = "block";  // Ensure message is visible
+            event.preventDefault();  // Stop form submission
+        }
+    }
+
+   </script>
+</head>
+<body>
+    <div class="container-fluid vh-100" style="margin-top: 10px;">
+    <div class="" style="margin-top: 100px;">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">
+                        Transfer Money
+                    </h3>
+                    <form  method="post" onsubmit="checkTransferLogic(event);">
+                        <div class="p-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <label for="from_account" style="color: white;">From account:</label>
+                                </span>
+                               
+                                <select id="from_account"  name="from_account" class="form-control">
+                                    <option value="checkings">checkings</option>
+                                    <option value="savings">savings</option>
+                                </select>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                   <label for="to_account" style="color: white;" >To account:</label>
+                                </span>
+                                
+                                <select id="to_account" name="to_account" class="form-control">
+                                    <option value="savings">savings</option>
+                                    <option value="checkings">checkings</option>
+                                    
+                                </select>
+
+                            </div>
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="bi bi-person-plus-fill text-white"></i>
+                                </span>
+                                <input  type="text" id="deposit" name="deposit" value="0.00" class="form-control rounded" placeholder="$">
+
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                   <label for="Memo" style="color: white;">Memo</label>
+                                </span>
+                                <input type="text" style=" height: 10rem;" id="memo" name="memo" value="" class="form-control rounded" placeholder="memo">
+                            </div>
+                            <p id="message" class="text-danger rounded d-flex justify-content-center">
+                                <%- locals.message %>
+                            </p>
+                            <input type="text" id="checkingBalance" value="<%= checkBalance %>" hidden>
+                            <input type="text" id="savingsBalance" value="<%= saveBalance %>" hidden>
+                                    <div class="p-4">
+                                        
+                                        <div class="rounded d-flex justify-content-center">
+                                            <button type="submit" class="btn btn-primary">Send</button>
+                                           
+                                          </div>
+ 
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>

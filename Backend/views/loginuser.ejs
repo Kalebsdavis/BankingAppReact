@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE-edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enter Login</title>
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="font/bootstrap-icons.css">
+    <script type="text/javascript" src="crypto-js.js"></script>
+    
+    <script>
+        async function retrieveSalt() {
+            const username = document.getElementById("username").value;
+            if (username) {
+                try {
+                    const response = await fetch('/loginuser/get_salt', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ username })
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        document.getElementById("salt").value = data.salt;
+                        document.getElementById("message").textContent = "";
+                    } else {
+                        document.getElementById("message").textContent = data.message;
+                    }
+                } catch (error) {
+                    console.error('Error fetching salt:', error);
+                }
+            }
+        }
+
+        function checkUser(event) {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+            const salt = document.getElementById("salt").value;
+
+            if (!username || !password) {
+                document.getElementById("message").textContent = "Please enter both username and password.";
+                event.preventDefault();
+            } else if (salt) {
+                // Hash the password with the salt
+                const hashedPassword = CryptoJS.SHA256(password + ":" + salt).toString(CryptoJS.enc.Hex);
+                document.getElementById("hashedPassword").value = hashedPassword;
+                console.log("user checked and validated.");
+            } else {
+                document.getElementById("message").textContent = "Salt retrieval failed.";
+                event.preventDefault();
+            }
+        }
+    </script>
+   
+</head>
+<body>
+    <div class="container-fluid vh-100" style="margin-top: 10px;">
+    <div class="" style="margin-top: 100px;">
+        <div class="rounded d-flex justify-content-center">
+            <div class="col-md-4 col-sm-12 shadow-lg p-5 bg-light">
+                <div class="text-center">
+                    <h3 class="text-primary">
+                        Sign in
+                    </h3>
+                    <form id="loginform"  onsubmit="checkUser(event);"  method="post" >
+                        <div class="p-4">
+                            <div class="input-group mb-3">
+                                <span class="input-group-text bg-primary">
+                                    <i class="bi bi-person-plus-fill text-white"></i>
+                                </span>
+                                <input id="username" name="username" type="text" class="form-control" autofocus ="autofocus" placeholder = "Username"  onblur="retrieveSalt()">
+
+                            </div>
+                            <div>
+                                <p id="message" class="text-danger" hidden>
+                                    <%- locals.message %>
+                                </p>
+                            </div>
+                            
+                                <div class="input-group mt-4">
+                                    <span class="input-group-text bg-primary"><i class="bi bi-key-fill text-white"></i></span>
+                                    <input id="password" type="password" class="form-control" autofocus="autofocus" placeholder="password">
+    
+                                </div>
+                                <div>
+                                    <p id="message" class="text-danger">
+                                        <%- locals.message %>
+                                    </p>
+                                </div>
+                                
+                                <input type="hidden" id="salt" name="salt" value="<%- locals.salt %>">
+                                <input type="hidden" id="hashedPassword" name="hashedPassword" value="">
+                                <div class="text-center">
+                                   
+                                    <div class="p-4">
+                                        
+                                        <button class="btn btn-primary mt-2" type="submit">
+                                            Next
+                                        </button>
+                                </div>
+                                <p class="text-center mt-5">Dont have an account?
+                                    <a href="/register">Sign Up</a>
+                                </p>
+                               
+                            
+                            
+                        </div>
+                    </form>
+                    
+
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+</body>
+</html>
