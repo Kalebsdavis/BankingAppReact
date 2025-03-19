@@ -78,10 +78,11 @@ function createTables() {
     "user_id INT NOT NULL AUTO_INCREMENT,\n" +
     "firstname VARCHAR(255) NOT NULL,\n" +
     "lastname VARCHAR(255) NOT NULL,\n" +
+    "username VARCHAR(255) NOT NULL UNIQUE,\n" +
+    "email VARCHAR(255) NOT NULL UNIQUE,\n" +
     "hashed_password VARCHAR(255) NOT NULL,\n" +
     "user_type_id int NOT NULL,\n"+
-    "salt VARCHAR(255) NOT NULL,\n" +
-    "username VARCHAR(255) NOT NULL UNIQUE,\n" +
+    
     "PRIMARY KEY (user_id),\n" +
     "FOREIGN KEY (user_type_id) REFERENCES user_types(user_type_id)\n" +
     ");";
@@ -151,8 +152,9 @@ function createTables() {
 }
 
 function createStoredProcedures(username){
+   
     //insert user type procedure
-            let sql = "CREATE PROCEDURE IF NOT EXISTS `insert_user_type`(\n" +
+            sql = "CREATE PROCEDURE IF NOT EXISTS `insert_user_type`(\n" +
             "IN user_type VARCHAR(45)\n" +
             ")\n" +
             "BEGIN\n" +
@@ -290,7 +292,7 @@ function createStoredProcedures(username){
                     }
                 });
                
-               //check credentials
+               //region CHECK CREDENTIALS
                 sql = "CREATE PROCEDURE IF NOT EXISTS `check_credentials`(\n" +
                 "IN username VARCHAR(255),\n" +
                 "IN hashed_password VARCHAR(255)\n" +
@@ -317,16 +319,16 @@ function createStoredProcedures(username){
             sql = "CREATE PROCEDURE IF NOT EXISTS `register_user`(\n" +
             "IN  firstname VARCHAR(255), \n" +
             "IN  lastname VARCHAR(255), \n" +
+            "IN  username VARCHAR(42), \n" +
+            "IN  email VARCHAR(42), \n" +
             "IN  hashed_password VARCHAR(255), \n" +
-            "IN  username VARCHAR(8), \n" +
-            "IN  salt VARCHAR(255), \n" +
             "OUT result INT\n" +
             ")\n" +
             "BEGIN\n" +
                 "DECLARE nCount INT DEFAULT 0;\n" +
                 "SET result = 0;\n" +
-                "INSERT INTO users (firstname, lastname, hashed_password, user_type_id, username, salt)\n" +
-                    `VALUES (firstname, lastname, hashed_password, 1,username, salt);\n` +
+                "INSERT INTO users (firstname, lastname, username, email, hashed_password, user_type_id )\n" +
+                    `VALUES (firstname, lastname, username, email, hashed_password, 1);\n` +
                 "CALL create_accounts(username);\n"+
             "END;"
             con.query(sql, function(err, results, fields) {

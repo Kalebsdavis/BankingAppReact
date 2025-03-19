@@ -6,6 +6,7 @@ var logger = require('morgan');
 var session = require('express-session');
 var MySQLStore = require('express-mysql-session')(session);
 const pool = require('./lib/sessionPool'); 
+require('dotenv').config({ path: './dev.env' });
 
 var indexRouter = require('./routes/index');
 var loginuserRouter = require('./routes/loginuser');
@@ -21,6 +22,7 @@ var accountinfoFORCUST =  require('./routes/accountinfoFORCUST');
 var money2otheraccountsRouter = require('./routes/money2otheraccounts');
 var transferRouter = require("./routes/transfer");
 var register_confirmedRouter = require("./routes/register_confirmed");
+var authRouter = require('./apiroutes/auth');
 
 var app = express();
 
@@ -72,6 +74,7 @@ app.use('/ATMinterface', ATMinterfaceRouter);
 app.use('/accountinfoFORCUST',accountinfoFORCUST);
 app.use('/money2otheraccounts', money2otheraccountsRouter);
 app.use('/register_confirmed', register_confirmedRouter);
+app.use('/api/auth', authRouter);
 
 
 
