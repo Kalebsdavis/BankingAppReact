@@ -1,0 +1,76 @@
+.main-content{
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100vh;
+}
+.profile-container{
+    width: 60%;
+    height: 70%;
+    margin-top: 10%;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 3px 3px 15px rgb(109, 109, 109);
+    border-radius: 5px;
+}
+.AccountDetails-container{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    height: 100%; /* Ensures the container takes the full height available */
+    
+}
+.detail-group{
+    margin-top: 3rem;
+}
+
+/* .main-content, .profile-container, .AccountDetails-container{
+    border: 1px solid red;
+} */
+.AccounDetails-Header{
+    position: relative;
+    top: 0;
+    font-size: 100px;
+    margin-top: 0; /* No margin-top, keeps the header at the top */
+    text-align: center; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.Header-txt{
+    font-weight:600;
+    font-size: 40px;
+    color: rgb(71, 145, 108);
+}
+
+.details{
+    text-align: center;
+    margin-top: 1rem;
+    font-size: 25px;
+    font-weight: 100;
+    color: rgb(71, 145, 108);
+}
+.password-ctn {
+    display: flex;      /* Enables flexbox */
+    align-items: center; /* Aligns items vertically */
+    gap: 10px;          /* Adds space between the text and button */
+}
+
+
+/* Optional: To ensure the button doesn't stretch */
+.changePassword {
+    white-space: nowrap; /* Prevents text wrapping */
+    margin-bottom: 25px;
+    font-size: 0.9rem;
+}
+.password-txt{
+    margin-top: 1rem;
+    font-size: 25px;
+    font-weight: 100;
+    color: rgb(71, 145, 108);
+}

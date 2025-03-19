@@ -1,3 +1,8 @@
+.main-content{
+    justify-content: center;
+    align-items: center;
+    
+}
 .register-container{
     /* height: 70%; */
     width: 30%;
@@ -11,11 +16,7 @@
     border-radius: 5px;
 
 }
-.main-content{
-    justify-content: center;
-    align-items: center;
-    
-}
+
 .SignUpForm{
     min-width: auto;
     text-align: center;
@@ -52,11 +53,18 @@
     flex-direction: row;
 }
 .password{
-    margin-bottom:1rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
     display: flex;
     flex-direction: row;
 }
 .icon{
     margin-right: 10px;
     margin-top: 0.5rem;
+    color: rgb(71, 145, 108);
 }
+.errorMessage{
+    color: red;
+    font-size: 12px;
+  
+  }

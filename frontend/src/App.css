@@ -48,9 +48,16 @@
   z-index: 1000;
   box-shadow: 3px 3px 10px rgb(86, 86, 86);
 }
-.Header{
+.bankName{
+  position: fixed;
+  left: 10px;
   color: white;
 }
+.profile-icon{
+  position: absolute;
+  right: 30px;
+}
+
 .main-container{
   margin-top: 10%;
   display: flex;
@@ -59,9 +66,38 @@
 }
 
 .account-container{
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
   align-items: center;
-  justify-content: center;
-  width: 70%;
-  height: 100%;
+  width: 60%;
+  height: 25vh;
   box-shadow: 3px 3px 10px rgb(86, 86, 86);
+  
 }
+.container-banner{
+  width: 60%;
+  height: 5%;
+  background-color: rgb(71, 145, 108);
+  position: fixed;
+  border-radius: 10px 10px 0 0;
+}
+.account-lbl{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  margin-left: 1rem;
+  font-size: 15px;
+  color: white;
+}
+
+.balance{
+  color: rgb(71, 145, 108);
+  font-size: 12px;
+  margin-top: 5rem;
+}
+.balance-txt{
+  font-size: 70px;
+}
+
