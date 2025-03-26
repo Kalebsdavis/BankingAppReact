@@ -42,7 +42,7 @@ const NavBar = () =>{
             <div className="navbaractions">
             <div className="navlinks">
                 <Link to={'/bankAccountPage'} className="navlink">Accounts</Link>
-                <Link to={'/deposit'} className="navlink">Deposit</Link>
+                <Link to={'/deposit'} className="navlink">Transaction Tools</Link>
                 <Link to={'/transactionhistory'} className="navlink">Transaction History</Link>
             </div>
             
