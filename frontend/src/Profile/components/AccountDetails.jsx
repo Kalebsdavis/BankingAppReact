@@ -1,8 +1,14 @@
 import '../styles/AccountDetails.css';
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
+import { UserContext } from '../../context/userContext';
+import { useContext } from 'react';
 const AccountDetails =()=>{
-
+    const { user, setUser } = useContext(UserContext);
+    console.log(`user: ${user}`)
+    if (!user) {
+        return <p>Loading user data...</p>; // Handle undefined user
+      }
     return(
         <div className='AccountDetails-container'>
         <div className='AccountDetails-Header'>
@@ -11,10 +17,10 @@ const AccountDetails =()=>{
         <div className='detail-group'>
             
             <div className='details'>
-                <p className='name'>John Doe</p>
+                <p className='name'>{user?.firstname} {user?.lastname}</p>
                 </div>
             <div className='details'>
-                <p className='email'>jdoe@gmail.com</p>
+                <p className='email'>{user?.email}</p>
                 </div>
             <div className='password-ctn'>
                 <div className='password'>

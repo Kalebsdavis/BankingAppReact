@@ -23,6 +23,8 @@ var money2otheraccountsRouter = require('./routes/money2otheraccounts');
 var transferRouter = require("./routes/transfer");
 var register_confirmedRouter = require("./routes/register_confirmed");
 var authRouter = require('./apiroutes/auth');
+var containersRouter = require('./apiroutes/containers');
+var transactionsRouter = require('./apiroutes/transactions');
 
 var app = express();
 
@@ -75,6 +77,8 @@ app.use('/accountinfoFORCUST',accountinfoFORCUST);
 app.use('/money2otheraccounts', money2otheraccountsRouter);
 app.use('/register_confirmed', register_confirmedRouter);
 app.use('/api/auth', authRouter);
+app.use('/api/containers', containersRouter);
+app.use('/api/transactions', transactionsRouter)
 
 
 

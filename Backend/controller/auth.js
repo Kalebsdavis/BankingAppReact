@@ -107,8 +107,30 @@ const loginUser =async(req,res) =>{
     }
 
 //#endregion login endpoint
+//#region used to decode the cookie for userContext.jsx
+const checkAuth = (req, res) => {
+    const token = req.cookies.token;
+    if (!token) {
+        return res.status(401).json({ loggedIn: false, error: "Not authenticated" });
+    }
 
+    jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+        if (err) {
+            return res.status(403).json({ loggedIn: false, error: "Invalid token" });
+        }
+        res.json({ loggedIn: true, user: decoded }); // Send decoded user info
+    });
+};
+
+//#region log out user
+const logOutUser = (req,res) =>{
+    res.clearCookie('token');
+    return res.json({message: 'Logged out succesful'});
+}
+//#endregion log out user
 module.exports={
     loginUser,
-    register
+    register,
+    checkAuth,
+    logOutUser
 }

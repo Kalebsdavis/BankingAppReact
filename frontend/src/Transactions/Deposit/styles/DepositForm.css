@@ -1,0 +1,61 @@
+.DepositForm-cntner{
+    margin-top: 20vh;
+    height: 50vh;
+    width: 50vw;
+    border-radius: 10px;
+    box-shadow: 3px 3px 15px rgb(110, 110, 110);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.DepositForm-form{
+    height: 100%;
+    align-items: center;
+    justify-content: flex-start;
+    display: flex;
+    flex-direction: column;
+}
+.Header{
+    margin-top: 15px;
+    margin-bottom: 3rem;
+}
+.h2{
+    font-size: 25px;
+    color: black;
+    font-weight: 400;
+   
+}
+.inputs{
+    margin-top: auto; /* Push inputs down */
+    margin-bottom: auto; /* Keep them in the middle */
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.deposit-btn{
+    margin-bottom: auto;
+    margin-top: auto;
+}
+.select-account-li{
+    width: auto;
+}
+
+.memo-container {
+    height: 20vh; /* Container height */
+    width: 30vw;  /* Container width */
+    overflow: hidden; /* Hide scrollbars if needed */
+}
+
+.memo {
+    height: 100%;    /* Fill the container */
+    width: 100%;     /* Fill the container */
+    resize: none;    /* Disable resizing (optional) */
+    padding: 10px;   /* Add some padding for better appearance */
+    font-size: 16px; /* Set font size for readability */
+    line-height: 1.5; /* Space between lines of text */
+}
+.select-transactionType-li{
+    width: auto;
+}

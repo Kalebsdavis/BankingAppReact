@@ -1,0 +1,49 @@
+
+.Header{
+    text-align: center;
+    color: rgb(71, 145, 108);
+}
+/* Table container */
+table {
+    width: 100%;
+    border-collapse: collapse; /* Makes sure borders don't double up */
+    margin: 20px 0; /* Adds space around the table */
+    border-radius: 10px;
+}
+
+/* Table headers */
+th {
+    background-color: rgb(71, 145, 108);/* Green background */
+    color: white; /* White text */
+    padding: 10px;
+    text-align: center; /* Align text to the left */
+}
+
+/* Table cells */
+td {
+    padding: 8px 12px; /* Adds padding to table cells */
+    
+}
+
+/* Alternating row colors for readability */
+tr:nth-child(even) {
+    background-color: #f2f2f2; /* Light grey for even rows */
+}
+
+/* Hover effect for rows */
+tr:hover {
+    background-color: #ddd; /* Darker grey when hovering */
+}
+
+/* Center table content */
+th, td {
+    text-align: center;
+}
+
+/* Table container margin */
+table {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+}

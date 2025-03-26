@@ -39,7 +39,7 @@ const loginUser  = async(e) => {
           setUser(data);//set user info 
           toast.success("Login successful!");
           setData({ username: '', password: '' })//reset form
-          navigate('/landingpage')//navigate to landing page
+          navigate('/bankAccountPage')//navigate to landing page
       }
   }
   catch(error){

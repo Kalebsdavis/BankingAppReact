@@ -49,16 +49,20 @@
 }
 
 .details{
+    position: relative;
     text-align: center;
     margin-top: 1rem;
     font-size: 25px;
     font-weight: 100;
     color: rgb(71, 145, 108);
+
 }
 .password-ctn {
+    position: relative;
     display: flex;      /* Enables flexbox */
     align-items: center; /* Aligns items vertically */
-    gap: 10px;          /* Adds space between the text and button */
+    gap: 10px;
+    overflow: hidden;          /* Adds space between the text and button */
 }
 
 
