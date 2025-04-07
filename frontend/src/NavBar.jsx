@@ -32,9 +32,7 @@ const NavBar = () =>{
     return (
         <div className="NavBar">
             <div className="Logo"></div>
-            <div className="bankName">
-                <h1 className="Bank-name-h1">Fezcos Bank</h1>
-            </div>
+                <Link to={'/'} className="bankName">Fezcos Bank</Link>
             <div className='profile-icon'>
                 <Link to='/accountdetails'><FaCircleUser size={40} color="white"/></Link>
             </div>
@@ -51,6 +49,15 @@ const NavBar = () =>{
             </div>
             </div>
         )}
+         {!user &&(
+            <div className="navbarnotloggedin">
+            <div className="login-links">
+                <Link to={'/login'} className="navlink">Log In</Link>
+                <Link to={'/signup'} className="navlink">Sign Up</Link>
+                <Link to={'/aboutus'} className="navlink">About Us</Link>
+            </div>
+            </div>
+         )}
 
         </div>
     )

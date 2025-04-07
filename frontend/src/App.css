@@ -47,11 +47,15 @@
   background-color: rgb(71, 145, 108);
   z-index: 1000;
   box-shadow: 3px 3px 10px rgb(86, 86, 86);
+  overflow: hidden;
 }
 .bankName{
   position: fixed;
   left: 10px;
   color: white;
+  text-decoration: none;
+  font-size: 40px;
+  font-weight: bold;
 }
 .profile-icon{
   position: absolute;
@@ -90,6 +94,15 @@
   position: relative;
   border-radius: 10px 10px 0 0;
 }
+.option-icon{
+  position: absolute;
+  right: 25px;
+  
+}
+.option-icon:hover{
+  color: rgb(71, 145, 108);
+}
+
 .account-lbl{
   position: absolute;
   bottom: 0;
@@ -126,11 +139,55 @@
   flex-direction: row;
   margin-bottom: 1rem;
 }
+.navbarnotloggedin{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+  position:absolute;
+  
+  right: 8vw;
+}
 .navlinks{
   text-align: center;
 }
 .navlink{
-  margin: 1rem;
+  
   color: white;
   text-decoration: none;
+  padding: 44px 23px; /* Ensures enough clickable area */
+  transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
 }
+
+.navlink:hover{
+  background-color: rgb(59, 122, 91); /* Full white box on hover */
+  color: rgb(255, 255, 255); /* Adjust text color for contrast */
+}
+
+/* Modal Styling */
+.Modal-body{
+  width: 100%;
+}
+.options-list{
+  text-align: center;
+  list-style: none;
+  padding:0;
+}
+.options-list li{
+  padding: 30px 20px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+.options-list li:hover{
+  background-color: rgb(223, 223, 223);
+  width: 100%; /* Ensures it spans the modal width */
+  display: block; /* Makes sure it extends fully */
+}
+
+/*Landing Page*/
+.card{
+  margin-top: 5rem;
+  width: 30vw;
+  background-color: whitesmoke;
+  box-shadow: 3px 3px 10px black;
+}
+

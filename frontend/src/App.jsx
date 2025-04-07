@@ -1,7 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter as Router, Route, Routes, useLocation } from "react-router-dom";
-import LandingPage from './bankAccountPage';
+import AccountPage from './bankAccountPage';
 import LogIn from './Auth/Login/Login';
 import NavBar from './NavBar';
 import SignUp from './Auth/Signup/Signup';
@@ -12,6 +12,7 @@ import ProtectedRoute from "./ProtectedRoutes";
 import BankAccountPage from './bankAccountPage';
 import Deposit from './Transactions/Deposit/Deposit';
 import TransactionHistory from './Transactions/TransactionHistory/TransactionHistory';
+import LandingPage from './LandingPage';
 
 function App() {
   return (
@@ -21,12 +22,13 @@ function App() {
       <NavBar/>
       <Toaster position="bottom-right" toastOptions={{ duration: 2000 }} />
       <Routes>
+        <Route index path='/' element={<LandingPage/>}/>
         <Route index path='/login' element={<LogIn/>}/>
         <Route path='/signup' element={<SignUp/>}/>
 
         {/*protected routes */}
         <Route element={<ProtectedRoute/>}>
-        <Route path='/bankAccountPage' element={<BankAccountPage/>}/>
+        <Route path='/bankAccountPage' element={<AccountPage/>}/>
         <Route path='/accountdetails' element={<Profile/>}/>
         <Route path='/deposit/*' element={<Deposit/>}/>
         <Route path='/transactionhistory/*' element={<TransactionHistory/>}/>

@@ -59,3 +59,13 @@
 .select-transactionType-li{
     width: auto;
 }
+.select-transactionType-li:focus{
+    box-shadow: 1px 1px 1px 5px rgb(122, 255, 189);
+    opacity: 50%;
+}
+
+
+.select-account-li:focus{
+    box-shadow: 1px 1px 1px 5px rgb(122, 255, 189);
+    opacity: 50%;
+}
